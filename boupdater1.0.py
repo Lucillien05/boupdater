@@ -17,13 +17,11 @@ for patch in patches:
                         print(f'Patch-{patch} is outdated. Updating...')
                         os.remove(f'Data\{patchurl}-{patch}.{mpq}')
                         wget.download(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}', f'Data\{patchurl}-{patch}.{mpq}')
-                        print('Patch-{patch} successfully updated!')
                 else:
                     if int(urllib.request.urlopen(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}').length) == 0:
                         print('Error')
                     print(f'No Patch-{patch} detected. Downloading new...')
                     wget.download(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}', f'Data\{patchurl}-{patch}.{mpq}')
-                    print('Done')
             except:
                 fail += 1
 if os.path.exists('Data\Patch-M.mpq') and int(os.path.getsize('Data/Patch-M.mpq')) == 8707764965:
