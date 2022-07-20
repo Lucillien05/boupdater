@@ -23,10 +23,9 @@ for patch in patches:
             except:
                 print(f'Except {patchurl}-{patch}.{mpq}')
 if os.path.exists('Data\Patch-M.mpq') and int(os.path.getsize('Data/Patch-M.mpq')) == 8707764965:
-    pass
+    if os.path.exists('Cache'):
+        shutil.rmtree('Cache')
+    os.startfile('bradavice.exe')
+    sys.exit()
 else:
-    print('You have not updated OR installed Patch-M')
-if os.path.exists('Cache'):
-    shutil.rmtree('Cache')
-os.startfile('bradavice.exe')
-sys.exit()
+    print('You have not updated OR installed Patch-M, cancelled opening.')
