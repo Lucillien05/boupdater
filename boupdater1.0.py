@@ -12,11 +12,10 @@ for patch in patches:
     for mpq in mpqs:
         for patchurl in patchs:
             try:
-                if os.path.exists(f'Data\{patchurl}-{patch}.{mpq}'):
-                    if int(urllib.request.urlopen(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}').length) != int(os.path.getsize(f'Data/{patchurl}-{patch}.{mpq}')):
-                        print(f'Patch-{patch} is outdated. Updating...')
-                        os.remove(f'Data\{patchurl}-{patch}.{mpq}')
-                        wget.download(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}', f'Data\{patchurl}-{patch}.{mpq}')
+                if os.path.exists(f'Data\{patchurl}-{patch}.{mpq}') and int(urllib.request.urlopen(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}').length) != int(os.path.getsize(f'Data/{patchurl}-{patch}.{mpq}')):
+                    print(f'Patch-{patch} is outdated. Updating...')
+                    os.remove(f'Data\{patchurl}-{patch}.{mpq}')
+                    wget.download(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}', f'Data\{patchurl}-{patch}.{mpq}')
                 else:
                     #next if cancels print if not correct, blocked spamming messages in console
                     if int(urllib.request.urlopen(f'https://bradavice-online.cz/patches/{patchurl}-{patch}.{mpq}').length) == 0:
